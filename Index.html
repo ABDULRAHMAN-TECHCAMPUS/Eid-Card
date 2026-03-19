@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تهنئة عيد</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 24px;
+    }
+
+    .title {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    .controls label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .controls input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .controls input:focus {
+      border-color: #0f766e;
+      box-shadow: 0 0 0 3px rgba(15,118,110,0.12);
+    }
+
+    .preview-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-box {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #e5e7eb;
+    }
+
+    .image-box img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .label {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 220px;
+      max-width: calc(100% - 40px);
+      padding: 14px 22px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: bold;
+      border-radius: 14px;
+      backdrop-filter: blur(2px);
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .hint {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 16px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+
+      .label {
+        font-size: 22px;
+        bottom: 18px;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <h1 class="title">بطاقة تهنئة عيد</h1>
+      <p class="subtitle">اكتب النص وسيظهر مباشرة فوق الصورة الثابتة</p>
+
+      <div class="controls">
+        <label for="greetingInput">نص التهنئة</label>
+        <input
+          type="text"
+          id="greetingInput"
+          placeholder="اكتب التهنئة هنا"
+          maxlength="60"
+        />
+      </div>
+
+      <div class="preview-wrapper">
+        <div class="image-box">
+          <!-- الصورة الثابتة من داخل المستودع -->
+          <img src="images/eid.jpg" alt="تهنئة عيد" />
+          <div class="label" id="greetingLabel">عيدكم مبارك</div>
+        </div>
+      </div>
+
+      <p class="hint">
+        لتغيير الصورة لاحقًا، استبدل فقط الملف:
+        <strong>images/eid.jpg</strong>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("greetingInput");
+    const label = document.getElementById("greetingLabel");
+    const defaultText = "عيدكم مبارك";
+
+    input.addEventListener("input", function () {
+      const value = input.value.trim();
+      label.textContent = value === "" ? defaultText : value;
+    });
+  </script>
+</body>
+</html>
